@@ -84,7 +84,7 @@ def save_metrics(metrics: dict, file_path: str) -> None:
 
 def main():
     try:
-        clf = load_model('./emotion-detection/models/model.pkl')
+        clf = load_model('./models/model.pkl')
         test_data = load_data('./data/processed/test_tfidf.csv')
         
         X_test = test_data.iloc[:, :-1].values
@@ -92,7 +92,7 @@ def main():
 
         metrics = evaluate_model(clf, X_test, y_test)
         
-        save_metrics(metrics, 'emontion-detection/reports/metrics.json')
+        save_metrics(metrics, 'reports/metrics.json')
     except Exception as e:
         logger.error('Failed to complete the model evaluation process: %s', e)
         print(f"Error: {e}")
